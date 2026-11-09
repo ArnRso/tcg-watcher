@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCG Watcher</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>TCG Watcher</h1>
+      <button id="refresh" type="button" title="Relever maintenant">Actualiser</button>
+    </header>
+
+    <!-- Gabarits affichés avant que le storage réponde, pour que la fenêtre
+         ne s'ouvre jamais sur du vide. Le script les remplace aussitôt. -->
+    <ul id="sites" class="sites">
+      <li class="site skeleton">
+        <div class="site-top"><span class="site-name">WikiMasters</span><span class="count">·</span></div>
+      </li>
+      <li class="site skeleton">
+        <div class="site-top"><span class="site-name">HoloPocket</span><span class="count">·</span></div>
+      </li>
+    </ul>
+
+    <section class="settings">
+      <h2>Jeux suivis</h2>
+      <div id="games" class="games"></div>
+
+      <label class="toggle">
+        <input id="notify" type="checkbox" />
+        <span>Me notifier quand c'est prêt</span>
+      </label>
+    </section>
+
+    <script src="shared/state.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

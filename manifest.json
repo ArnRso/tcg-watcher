@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "TCG Watcher",
+  "version": "1.0.0",
+  "description": "Surveille les paquets WikiMasters et l'énergie HoloPocket, et prévient quand c'est prêt.",
+  "permissions": ["storage", "alarms", "notifications"],
+  "host_permissions": [
+    "https://www.wiki-masters.com/*",
+    "https://holopocket.fr/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.wiki-masters.com/*"],
+      "js": ["src/sites/watcher.js", "src/sites/wikimasters.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://holopocket.fr/*"],
+      "js": ["src/sites/watcher.js", "src/sites/holopocket.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
